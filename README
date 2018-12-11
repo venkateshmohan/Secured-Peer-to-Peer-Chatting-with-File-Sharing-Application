@@ -1,0 +1,39 @@
+How to Compile and Run the code
+
+Step 1:
+Extract the Chat.zip file and below are its contents
+1) Peer.java -  The main class file
+2) PingSender.java - Periodically sends ping messages to all connected neighbors
+3) PingListener.java - Receives and processes Hellos, HelloAcks, Messages and files
+4) CommandListener.java - Listens to commands from users such as broadcast, chat , find friend and send files
+5) Listener.java - Actively listens for new connections
+6) FileListener.java - The thread that was supposed to process files. Not used now.
+7) peers.csv - the file where all peers register details about themselves
+8) send/apple.txt - the test file that we use for sending to Peers
+9) recv directory - the directory where received files are stored per node
+
+Step 2:
+Open a command line and navigate to the location of the extracted folder
+Type the below command
+javac *.java
+
+Step 3:
+Make sure the peers.csv file is clear
+
+Step 4:
+Open a new command prompt for every instance of Peer which you wish to run
+Type the below command
+java Peer
+
+Step 5:
+A running instance of Peer has the below functionalities
+1) Initially will request you for a user name. Will accept only if no user by the same name exists
+2) If the very first user, it listens for new users to connect to it
+3) Else, will display list of users in the chat room and ask how many of them you would like to connect with
+4) Upon entering the number of users, you want to connect with, it prompts for their names
+5) Any node at any point can type 'find friend' to identify new users and connect to them
+6) Typing 'broadcast ANYMESSAGE YOU WANT' will send it to all users it is currently connected to
+7) Typing 'chat @ USERNAME ANY MESSAGE' will send encrypted message to the particular user alone
+8) Typing 'send file' will prompt for user to send file to. The file will be received in the folder 'recv'
+9) hello and Hello acks are exchanged between all connected users
+10) When a user crashes, the connected users display an appropriate message and also remove its details from their hash table
